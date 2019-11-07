@@ -22,7 +22,7 @@ target_link_libraries(libadder_static
 set_target_properties(libadder_static PROPERTIES
         POSITION_INDEPENDENT_CODE ON
         OUTPUT_NAME "libadder_static_$<CONFIG>"
-        OUTPUT_NAME_RELEASE "libadder"
+        OUTPUT_NAME_RELEASE "libadder_static"
         )
 
 # Shared library
@@ -42,7 +42,7 @@ set_target_properties(libadder PROPERTIES
         )
 
 install(TARGETS
-            libadder
+            #libadder
             libadder_static
             libadder_lib
             libadder_include_libadder
@@ -78,9 +78,16 @@ install(FILES
         DESTINATION cmake/LibAdder
         )
 
-export(EXPORT libadder_export
-        FILE ${CMAKE_CURRENT_BINARY_DIR}/LibAdderTargets.cmake
-        NAMESPACE LibAdder::)
-
-#Register package in user's package registry
-export(PACKAGE LibAdder)
+# This is useless and doesn't allow multi-config builds.
+# If a build tree is desired to integrate a project,
+# submodule aproach is the right option.
+# Otherwise, if we decide to link with exported targets,
+# above install functions will provide that targets,
+# allowing multi-config artifact generations.
+#
+#export(EXPORT libadder_export
+#        FILE ${CMAKE_CURRENT_BINARY_DIR}/LibAdderTargets.cmake
+#        NAMESPACE LibAdder::
+#        )
+#
+#export(PACKAGE LibAdder)

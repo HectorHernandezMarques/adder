@@ -9,7 +9,7 @@ target_include_directories(libadder_lib
         )
 
 target_link_libraries(libadder_lib
-        PUBLIC
+        PRIVATE
             libadder_include_libadder
         )
 

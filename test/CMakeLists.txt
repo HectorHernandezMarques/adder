@@ -6,7 +6,8 @@ add_executable(libadder_test
 
 target_link_libraries(libadder_test
         PRIVATE
-            libadder_lib
+            libadder_include_libadder
+            libadder_static
             gtest_main
         )
 
