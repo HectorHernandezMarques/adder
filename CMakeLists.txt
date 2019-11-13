@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14.7)
 
 project(libadder
-        VERSION 1.0.0
+        VERSION 2.0.0
         LANGUAGES CXX
         )
 
