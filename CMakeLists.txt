@@ -21,8 +21,8 @@ target_link_libraries(libadder_static
 
 set_target_properties(libadder_static PROPERTIES
         POSITION_INDEPENDENT_CODE ON
-        OUTPUT_NAME "libadder_static_$<CONFIG>"
-        OUTPUT_NAME_RELEASE "libadder_static"
+        OUTPUT_NAME "libadder_static_${PROJECT_VERSION}_$<CONFIG>"
+        OUTPUT_NAME_RELEASE "libadder_static_${PROJECT_VERSION}"
         )
 
 # Shared library
@@ -37,9 +37,12 @@ target_link_libraries(libadder
 
 set_target_properties(libadder PROPERTIES
         POSITION_INDEPENDENT_CODE ON
-        OUTPUT_NAME "libadder_$<CONFIG>"
-        OUTPUT_NAME_RELEASE "libadder"
+        OUTPUT_NAME "libadder_${PROJECT_VERSION}_$<CONFIG>"
+        OUTPUT_NAME_RELEASE "libadder_${PROJECT_VERSION}"
         )
+
+# Installation
+set(LIBADDER_CMAKE_INSTALL_DIR cmake/LibAdder/${PROJECT_VERSION})
 
 install(TARGETS
             #libadder
@@ -58,7 +61,7 @@ install(EXPORT libadder_export
         NAMESPACE
             LibAdder::
         DESTINATION
-            cmake/LibAdder
+            ${LIBADDER_CMAKE_INSTALL_DIR}
         )
 
 include(CMakePackageConfigHelpers)
@@ -69,13 +72,13 @@ write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/LibAdderConfigVersi
 
 configure_package_config_file(cmake/LibAdderConfig.cmake.in
         ${CMAKE_CURRENT_BINARY_DIR}/LibAdderConfig.cmake
-        INSTALL_DESTINATION cmake/LibAdder
+        INSTALL_DESTINATION ${LIBADDER_CMAKE_INSTALL_DIR}
         )
 
 install(FILES
         ${CMAKE_CURRENT_BINARY_DIR}/LibAdderConfig.cmake
         ${CMAKE_CURRENT_BINARY_DIR}/LibAdderConfigVersion.cmake
-        DESTINATION cmake/LibAdder
+        DESTINATION ${LIBADDER_CMAKE_INSTALL_DIR}
         )
 
 # This is useless and doesn't allow multi-config builds.

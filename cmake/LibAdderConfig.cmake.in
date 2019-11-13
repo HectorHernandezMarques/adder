@@ -1,7 +1,5 @@
-get_filename_component(LibAdder_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
-
-if(NOT TARGET LibAdder::LibAdder)
-    include("${LibAdder_CMAKE_DIR}/LibAdderTargets.cmake")
+if(NOT TARGET LibAdder::libadder)
+    include("${CMAKE_CURRENT_LIST_DIR}/libadderTargets.cmake")
 endif()
 
 set(LibAdder_LIBRARIES LibAdder::libadder)

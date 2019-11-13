@@ -4,7 +4,7 @@ add_library(libadder_lib OBJECT
 
 target_include_directories(libadder_lib
         INTERFACE
-            $<INSTALL_INTERFACE:include>
+            $<INSTALL_INTERFACE:include/${PROJECT_NAME}_${PROJECT_VERSION}>
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         )
 
