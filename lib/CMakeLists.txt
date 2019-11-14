@@ -17,13 +17,13 @@ set_target_properties(libadder_lib PROPERTIES
         POSITION_INDEPENDENT_CODE ON
         )
 
-if(MSVC)
+if (MSVC)
     target_compile_options(libadder_lib
             PRIVATE
                 -W4
                 -WX
             )
-else()
+else ()
     target_compile_options(libadder_lib
             PRIVATE
                 -Wall
@@ -31,4 +31,4 @@ else()
                 -Werror
                 -pedantic
             )
-endif()
+endif ()

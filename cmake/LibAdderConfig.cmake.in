@@ -1,6 +1,6 @@
-if(NOT TARGET LibAdder::libadder)
+if (NOT TARGET LibAdder::libadder)
     include("${CMAKE_CURRENT_LIST_DIR}/LibAdderTargets.cmake")
-endif()
+endif ()
 
 set(LibAdder_LIBRARIES
         LibAdder::libadder
@@ -11,5 +11,17 @@ message(STATUS
         "LibAdder successfully imported."
         )
 message(STATUS
-        "\${LibAdder_LIBRARIES} => ${LibAdder_LIBRARIES}"
+        "\${LibAdder_LIBRARIES} =>"
         )
+
+foreach (LibAdder_LIBRARY IN LISTS LibAdder_LIBRARIES)
+    if (TARGET ${LibAdder_LIBRARY})
+        message(STATUS
+                \t\t${LibAdder_LIBRARY}
+                )
+    else ()
+        message(SEND_ERROR
+                "\t\t${LibAdder_LIBRARY} not found"
+                )
+    endif ()
+endforeach ()
