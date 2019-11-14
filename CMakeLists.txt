@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14.7)
 
 project(libadder
-        VERSION 2.0.1
+        VERSION 2.0.2
         LANGUAGES CXX
         )
 
@@ -42,7 +42,7 @@ set_target_properties(libadder PROPERTIES
         )
 
 # Installation
-set(LIBADDER_CMAKE_INSTALL_DIR cmake/LibAdder/${PROJECT_VERSION})
+set(LIBADDER_CMAKE_INSTALL_DIR lib/cmake/LibAdder-${PROJECT_VERSION})
 
 install(TARGETS
             #libadder
