@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.14.7)
+set(CMAKE_CXX_STANDARD 17)
 
 project(libadder
-        VERSION 2.0.2
+        VERSION 2.0.3
         LANGUAGES CXX
         )
 
@@ -21,6 +22,7 @@ target_link_libraries(libadder_static
 
 set_target_properties(libadder_static PROPERTIES
         POSITION_INDEPENDENT_CODE ON
+        PREFIX ""
         OUTPUT_NAME "libadder_static_${PROJECT_VERSION}_$<CONFIG>"
         OUTPUT_NAME_RELEASE "libadder_static_${PROJECT_VERSION}"
         )
@@ -37,6 +39,7 @@ target_link_libraries(libadder
 
 set_target_properties(libadder PROPERTIES
         POSITION_INDEPENDENT_CODE ON
+        PREFIX ""
         OUTPUT_NAME "libadder_${PROJECT_VERSION}_$<CONFIG>"
         OUTPUT_NAME_RELEASE "libadder_${PROJECT_VERSION}"
         )
@@ -45,7 +48,7 @@ set_target_properties(libadder PROPERTIES
 set(LIBADDER_CMAKE_INSTALL_DIR lib/cmake/LibAdder-${PROJECT_VERSION})
 
 install(TARGETS
-            #libadder
+            libadder
             libadder_static
             libadder_lib
             libadder_include_libadder

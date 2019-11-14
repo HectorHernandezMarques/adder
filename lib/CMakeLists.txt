@@ -13,6 +13,10 @@ target_link_libraries(libadder_lib
             libadder_include_libadder
         )
 
+set_target_properties(libadder_lib PROPERTIES
+        POSITION_INDEPENDENT_CODE ON
+        )
+
 if(MSVC)
     target_compile_options(libadder_lib
             PRIVATE

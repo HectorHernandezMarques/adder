@@ -1,5 +1,5 @@
 if(NOT TARGET LibAdder::libadder)
-    include("${CMAKE_CURRENT_LIST_DIR}/libadderTargets.cmake")
+    include("${CMAKE_CURRENT_LIST_DIR}/LibAdderTargets.cmake")
 endif()
 
 set(LibAdder_LIBRARIES
