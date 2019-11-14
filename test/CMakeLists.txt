@@ -12,4 +12,5 @@ target_link_libraries(libadder_test
         )
 
 add_test(NAME libadder_test
-        COMMAND libadder_test)
+        COMMAND libadder_test
+        )

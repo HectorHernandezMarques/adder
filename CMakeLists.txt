@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION 3.14.7)
 set(CMAKE_CXX_STANDARD 17)
 
 project(libadder
-        VERSION 2.0.4
+        VERSION 2.0.5
         LANGUAGES CXX
         )
 
+include(cmake/AddSimpleLibrary.cmake)
 add_subdirectory(include)
 add_subdirectory(lib)
 add_subdirectory(test)
@@ -21,7 +22,6 @@ target_link_libraries(libadder_static
         )
 
 set_target_properties(libadder_static PROPERTIES
-        POSITION_INDEPENDENT_CODE ON
         PREFIX ""
         OUTPUT_NAME "libadder_static_${PROJECT_VERSION}_$<CONFIG>"
         OUTPUT_NAME_RELEASE "libadder_static_${PROJECT_VERSION}"
@@ -38,7 +38,6 @@ target_link_libraries(libadder
         )
 
 set_target_properties(libadder PROPERTIES
-        POSITION_INDEPENDENT_CODE ON
         PREFIX ""
         OUTPUT_NAME "libadder_${PROJECT_VERSION}_$<CONFIG>"
         OUTPUT_NAME_RELEASE "libadder_${PROJECT_VERSION}"
@@ -83,17 +82,3 @@ install(FILES
         ${CMAKE_CURRENT_BINARY_DIR}/LibAdderConfigVersion.cmake
         DESTINATION ${LIBADDER_CMAKE_INSTALL_DIR}
         )
-
-# This is useless and doesn't allow multi-config builds.
-# If a build tree is desired to integrate a project,
-# submodule aproach is the right option.
-# Otherwise, if we decide to link with exported targets,
-# above install functions will provide that targets,
-# allowing multi-config artifact generations.
-#
-#export(EXPORT libadder_export
-#        FILE ${CMAKE_CURRENT_BINARY_DIR}/LibAdderTargets.cmake
-#        NAMESPACE LibAdder::
-#        )
-#
-#export(PACKAGE LibAdder)
