@@ -1,4 +1,4 @@
-include("${CMAKE_CURRENT_LIST_DIR}/LibAdderTargets.cmake")
+include(${CMAKE_CURRENT_LIST_DIR}/LibAdderTargets.cmake)
 
 set(LibAdder_LIBRARIES
         LibAdder::libadder
@@ -15,7 +15,7 @@ message(STATUS
 foreach (LibAdder_LIBRARY IN LISTS LibAdder_LIBRARIES)
     if (TARGET ${LibAdder_LIBRARY})
         message(STATUS
-                \t\t${LibAdder_LIBRARY}
+                "\t\t${LibAdder_LIBRARY}"
                 )
     else ()
         message(SEND_ERROR

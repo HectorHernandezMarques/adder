@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14.7)
 set(CMAKE_CXX_STANDARD 17)
 
 project(libadder
-        VERSION 2.0.6
+        VERSION 2.0.7
         LANGUAGES CXX
         )
 
@@ -23,8 +23,9 @@ target_link_libraries(libadder_static
 
 set_target_properties(libadder_static PROPERTIES
         PREFIX ""
-        OUTPUT_NAME "libadder_static_${PROJECT_VERSION}_$<CONFIG>"
-        OUTPUT_NAME_RELEASE "libadder_static_${PROJECT_VERSION}"
+        OUTPUT_NAME libadder_static_$<CONFIG>
+        OUTPUT_NAME_RELEASE libadder_static
+        SUFFIX ${CMAKE_STATIC_LIBRARY_SUFFIX}.${PROJECT_VERSION}
         )
 
 # Shared library
@@ -39,8 +40,9 @@ target_link_libraries(libadder
 
 set_target_properties(libadder PROPERTIES
         PREFIX ""
-        OUTPUT_NAME "libadder_${PROJECT_VERSION}_$<CONFIG>"
-        OUTPUT_NAME_RELEASE "libadder_${PROJECT_VERSION}"
+        OUTPUT_NAME libadder_$<CONFIG>
+        OUTPUT_NAME_RELEASE libadder
+        SUFFIX ${CMAKE_SHARED_LIBRARY_SUFFIX}.${PROJECT_VERSION}
         )
 
 # Installation
